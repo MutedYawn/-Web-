@@ -1,4 +1,4 @@
-/* Крок 1. Універсальне скидання та border-box */
+/* Універсальне скидання та блокова модель */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,14 +18,19 @@ body {
     padding-top: 75px;
 }
 
-/* Крок 3.1. Контейнер-обгортка (.container) */
+/* Коректне успадкування блокового типу для всіх нових семантичних тегів */
+main, article, aside, footer, header, nav, section {
+    display: block;
+}
+
+/* Контейнер-обгортка (.container) */
 .container {
     max-width: 950px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-/* Шапка сайту (з попередніх кроків, щоб не зникала) */
+/* Шапка сайту */
 .site-header {
     position: fixed;
     top: 0;
@@ -58,7 +63,7 @@ body {
     list-style: none;
 }
 
-/* Крок 3.2. Стилізація блоків-карток (.card) адаптована під стиль сайту */
+/* Стилізація карток (.card) */
 .card {
     background-color: #082852;
     padding: 30px;
@@ -72,18 +77,28 @@ body {
     padding: 20px 0;
 }
 
-/* Локальне позиціонування бейджа */
+/* Розтягування головної обкладинки на всю ширину картки */
 .card-container {
-    position: relative;
-    display: inline-block;
+    width: 100%;
     margin-top: 20px;
 }
 
 .featured-card {
     position: relative;
-    display: inline-block;
+    display: block;
+    width: 100%;
 }
 
+.main-img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 174, 255, 0.3);
+    display: block;
+}
+
+/* Бейдж */
 .badge {
     position: absolute;
     top: -10px;
@@ -98,7 +113,38 @@ body {
     z-index: 10;
 }
 
-/* Крок 3.3. Стилізація таблиці */
+/* Стилізація довідкового блоку (<aside>) */
+aside.side-note {
+    background-color: rgba(0, 174, 255, 0.08);
+    border-left: 4px solid #33ccff;
+    padding: 18px 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #b3f9ff;
+    box-shadow: inset 0 0 15px rgba(0, 174, 255, 0.05);
+}
+
+aside.side-note h3 {
+    font-style: normal;
+    color: #33ccff;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+/* Оформлення підвалу сайту (<footer>) */
+.site-footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(0, 174, 255, 0.3);
+    background-color: rgba(5, 29, 60, 0.95);
+    color: #8ab4f8;
+    font-size: 0.95rem;
+}
+
+/* Таблиці */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -121,14 +167,7 @@ td {
     color: #b3f9ff;
 }
 
-/* Крок 3.4. Стилізація зображень та галереї (Grid) */
-.main-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 174, 255, 0.3);
-}
-
+/* Галерея (Grid) */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -169,7 +208,7 @@ td {
     text-decoration: none;
 }
 
-/* Загальні текстові стилі */
+/* Типографіка та заголовки */
 #page-title {
     font-size: 2rem;
     font-weight: 800;
