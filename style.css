@@ -1,4 +1,3 @@
-/* Універсальне скидання та блокова модель */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,19 +17,16 @@ body {
     padding-top: 75px;
 }
 
-/* Коректне успадкування блокового типу для всіх нових семантичних тегів */
 main, article, aside, footer, header, nav, section {
     display: block;
 }
 
-/* Контейнер-обгортка (.container) */
 .container {
     max-width: 950px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-/* Шапка сайту */
 .site-header {
     position: fixed;
     top: 0;
@@ -55,29 +51,84 @@ main, article, aside, footer, header, nav, section {
     font-size: 1.5rem;
     font-weight: 800;
     color: #33ccff;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 12px rgba(51, 204, 255, 0.7);
+    text-decoration: none;
 }
 
 .nav-list {
     display: flex;
     gap: 25px;
     list-style: none;
+    margin: 0;
 }
 
-/* Стилізація карток (.card) */
+header nav a {
+    position: relative;
+    color: #00ffff;
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00dbc5;
+    transition: width 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+    text-decoration: none;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
 .card {
     background-color: #082852;
     padding: 30px;
-    border: 1px solid rgba(0, 174, 255, 0.2);
+    border: 1px solid rgba(0, 174, 255, 0.25);
     border-radius: 12px;
     margin-bottom: 30px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -2px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 174, 255, 0.2);
+}
+
+.hero-section .card {
+    background: linear-gradient(135deg, #051d3c 0%, #09356b 50%, #0b4f8a 100%);
+    color: #ffffff;
+}
+
+.hero-section h1,
+#page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
 }
 
 .content-section {
     padding: 20px 0;
 }
 
-/* Розтягування головної обкладинки на всю ширину картки */
 .card-container {
     width: 100%;
     margin-top: 20px;
@@ -98,7 +149,6 @@ main, article, aside, footer, header, nav, section {
     display: block;
 }
 
-/* Бейдж */
 .badge {
     position: absolute;
     top: -10px;
@@ -113,16 +163,15 @@ main, article, aside, footer, header, nav, section {
     z-index: 10;
 }
 
-/* Стилізація довідкового блоку (<aside>) */
 aside.side-note {
-    background-color: rgba(0, 174, 255, 0.08);
+    background: radial-gradient(circle at top left, rgba(0, 174, 255, 0.22), rgba(5, 29, 60, 0.85));
     border-left: 4px solid #33ccff;
     padding: 18px 20px;
     margin: 25px 0;
     border-radius: 0 8px 8px 0;
     font-style: italic;
-    color: #b3f9ff;
-    box-shadow: inset 0 0 15px rgba(0, 174, 255, 0.05);
+    color: #e0f7ff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 aside.side-note h3 {
@@ -133,7 +182,6 @@ aside.side-note h3 {
     font-size: 1.1rem;
 }
 
-/* Оформлення підвалу сайту (<footer>) */
 .site-footer {
     text-align: center;
     padding: 30px 20px;
@@ -144,7 +192,6 @@ aside.side-note h3 {
     font-size: 0.95rem;
 }
 
-/* Таблиці */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -167,7 +214,6 @@ td {
     color: #b3f9ff;
 }
 
-
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -175,14 +221,24 @@ td {
     margin-top: 20px;
 }
 
-.gallery img {
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 174, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 174, 255, 0.3);
+    display: block;
+    transition: transform 0.4s ease-out;
 }
 
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
 
 .scroll-top-btn {
     position: fixed;
@@ -190,7 +246,7 @@ td {
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: #33ccff;
+    background: linear-gradient(135deg, #00aeff, #00dbc5);
     color: #051d3c;
     border-radius: 50%;
     display: flex;
@@ -200,20 +256,18 @@ td {
     font-weight: bold;
     box-shadow: 0 4px 12px rgba(0, 174, 255, 0.4);
     z-index: 999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .scroll-top-btn:hover {
-    background-color: #00dbc5;
+    transform: translateY(-4px);
     color: #ffffff;
+    box-shadow: 0 10px 18px rgba(0, 219, 197, 0.5);
     text-decoration: none;
 }
 
-
-#page-title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #33ccff;
-    margin-bottom: 15px;
+.scroll-top-btn:active {
+    transform: translateY(1px);
 }
 
 .section-title {
@@ -241,17 +295,17 @@ p {
 }
 
 .highlight {
-    background-color: rgba(0, 229, 255, 0.3); 
+    background-color: rgba(0, 229, 255, 0.25); 
     color: #ffffff; 
     padding: 2px 6px;
     border-radius: 4px;
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    border: 1px solid rgba(0, 229, 255, 0.35);
 }
 
 a {
     color: #00ffff; 
     text-decoration: none; 
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 a:hover {
@@ -308,6 +362,7 @@ ol {
     border-radius: 6px;
     font-size: 1rem;
     font-family: inherit;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -327,7 +382,7 @@ ol {
 .feedback-form textarea:focus {
     border-color: #00ffff;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(0, 255, 255, 0.3);
 }
 
 .radio-group {
@@ -360,28 +415,30 @@ ol {
     outline-offset: 2px;
 }
 
-
+button,
 .feedback-form button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #33ccff;
+    background-image: linear-gradient(to right, #0088cc, #00dbc5);
     color: #051d3c;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1.05rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .feedback-form button[type="submit"]:hover {
-    background-color: #00dbc5;
     color: #ffffff;
-    box-shadow: 0 0 12px rgba(0, 219, 197, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 219, 197, 0.4);
 }
 
 .feedback-form button[type="submit"]:active {
-    transform: scale(0.99);
+    transform: translateY(1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .feedback-form button[type="submit"]:focus {
