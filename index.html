@@ -22,6 +22,7 @@
                     <li><a href="#about">Про тему</a></li>
                     <li><a href="#features">Характеристики</a></li>
                     <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#feedback">Залишити відгук</a></li>
                 </ul>
             </nav>
         </div>
@@ -113,6 +114,66 @@
                         <img src="https://cukr-city.b-cdn.net/wp-content/uploads/2024/04/7_kvadrat.jpeg.webp" alt="Учасники музичного гурту re-read на фоні стіни">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXnNzvZm8yqS1Z6TXoPxezsouLWrKUddxAibI9hMxeuAb908YOU1J6W9Q&s=10" alt="Концертний виступ гурту re-read на сцені">
                     </div>
+                </article>
+            </section>
+
+            <section id="feedback" class="content-section">
+                <article class="card">
+                    <h2 class="section-title">Залишити відгук про альбом</h2>
+                    
+                    <form action="#" method="POST" class="feedback-form">
+
+                        <div class="form-group">
+                            <label for="user-name">Ваше ім'я:</label>
+                            <input type="text" id="user-name" name="user_name" placeholder="Наприклад, Олексій" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-email">Електронна пошта:</label>
+                            <input type="email" id="user-email" name="user_email" placeholder="example@domain.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="favorite-track">Ваш улюблений трек:</label>
+                            <select id="favorite-track" name="favorite_track">
+                                <option value="" disabled selected>-#> Оберіть варіант <#-</option>
+                                <option value="summer_days">У теплі літніх днів</option>
+                                <option value="home">Додому</option>
+                                <option value="teenagers">Тінейджерс</option>
+                                <option value="other">Інший трек з альбому</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-message">Ваші враження від прослуховування:</label>
+                            <textarea id="user-message" name="user_message" rows="4" placeholder="Поділіться своїми думками про музику..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="form-label-title">Бажаний спосіб зворотного зв'язку:</span>
+                            <div class="radio-group">
+                                <label for="contact-email" class="radio-label">
+                                    <input type="radio" id="contact-email" name="contact_method" value="email" checked>
+                                    Відповісти на Email
+                                </label>
+                                <label for="contact-phone" class="radio-label">
+                                    <input type="radio" id="contact-phone" name="contact_method" value="phone">
+                                    Зателефонувати
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label for="terms" class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                Я погоджуюсь на обробку персональних даних
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="submit-btn">Надіслати повідомлення</button>
+                        </div>
+                    </form>
                 </article>
             </section>
 
